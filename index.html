@@ -82,6 +82,7 @@
             <button onclick="filterTasks('all')" class="px-4 py-2 rounded-full bg-gray-800 text-white text-sm font-medium hover:bg-gray-700 transition shadow-md filter-btn" data-filter="all">Все</button>
             <button onclick="filterTasks('uncompleted')" class="px-4 py-2 rounded-full bg-white text-gray-600 text-sm font-medium hover:bg-gray-100 transition shadow-sm border border-gray-200 filter-btn" data-filter="uncompleted">Не выполнено</button>
             <button onclick="filterTasks('base')" class="px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium hover:bg-green-200 transition filter-btn" data-filter="base">Базовые</button>
+			<button onclick="filterTasks('increased')" class="px-4 py-2 rounded-full bg-yellow-100 text-yellow-700 text-sm font-medium hover:bg-yellow-200 transition filter-btn" data-filter="increased">Повышенные</button>
             <button onclick="filterTasks('high')" class="px-4 py-2 rounded-full bg-red-100 text-red-700 text-sm font-medium hover:bg-red-200 transition filter-btn" data-filter="high">Сложные</button>
         </div>
 
@@ -214,6 +215,7 @@
                 // Filtering Logic
                 if (filterType === 'uncompleted' && isChecked) return;
                 if (filterType === 'base' && task.difficulty !== 'Базовый') return;
+				if (filterType === 'increased' && task.difficulty !== 'Повышенный') return;
                 if (filterType === 'high' && task.difficulty !== 'Высокий') return;
 
                 const diffClass = getDifficultyColor(task.difficulty);
