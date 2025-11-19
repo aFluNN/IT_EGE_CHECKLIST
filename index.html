@@ -219,9 +219,18 @@
                 if (filterType === 'high' && task.difficulty !== 'Высокий') return;
 
                 const diffClass = getDifficultyColor(task.difficulty);
+                // Special button for Task 6
+                let extraAction = '';
+                if (task.id === 6) {
+                    extraAction = `
+                        <a href="https://aflunn.github.io/Number6EGE/" target="_blank" class="text-xs font-medium text-blue-600 hover:text-blue-800 bg-blue-50 hover:bg-blue-100 px-3 py-1.5 rounded-lg transition-colors flex items-center ml-2">
+                            <i class="fas fa-external-link-alt mr-1.5"></i>Подробнее
+                        </a>
+                    `;
+                }
 
                 const cardHTML = `
-                    <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 relative overflow-hidden card-transition group">
+                    <div class="bg-white rounded-xl p-5 shadow-sm border border-gray-100 relative overflow-hidden card-transition group flex flex-col">
                         <div class="absolute top-0 left-0 w-1 h-full ${task.difficulty === 'Высокий' ? 'bg-red-500' : (task.difficulty === 'Повышенный' ? 'bg-yellow-500' : 'bg-green-500')}"></div>
                         
                         <div class="flex justify-between items-start mb-3 pl-3">
@@ -250,6 +259,7 @@
                                 </div>
                                 <span class="text-sm font-medium text-gray-600 group-hover:text-gray-900 transition-colors">Выполнено</span>
                             </label>
+							${extraAction}
                         </div>
                     </div>
                 `;
